@@ -28,7 +28,7 @@ bool menuChoice::getVisible() const
 		return NULL;
 }
 
-std::string menuChoice::getOptionName() const
+string menuChoice::getOptionName() const
 {
 	if (this != nullptr)
 		return optionName;
@@ -48,7 +48,7 @@ void menuChoice::setVisible(bool visibleIn)
 		Visible = visibleIn;
 }
 
-void menuChoice::setOptionName(std::string nameIn)
+void menuChoice::setOptionName(string nameIn)
 {
 	if (this != nullptr)
 		optionName = nameIn;
