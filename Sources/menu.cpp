@@ -1,56 +1,52 @@
-#include "menu.h"
+#include "../Headers/menu.h"
 using namespace std;
 
-menu::menu() : choiceList(), selectedOption(1)
+menu::menu(): selectedOption(0)
 {
 	
 }
 
-unsigned int menu::getSelected() const
+menu::~menu()
 {
-	return selectedOption;
-}
 
-unsigned int menu::getLastOption() const
-{
-	unsigned int i = 0;
-	while (choiceList[i] != nullptr && i < optionsPerMenu)
-	{
-		i++;
-	}
-	return i;
 }
 
 unsigned int menu::display()
 {
 	char key = 0;
+	unsigned short int caughtIndex = 0;
 	do
 	{
-		for (unsigned int i = 0; i < optionsPerMenu; i++)
+		unsigned short int scanIndex = 0;
+		for(menuChoice choice: choiceList)
 		{
-			if (choiceList[i] != nullptr && i < optionsPerMenu)
+			string selectedLeft = "	", selectedRight = "	";
+			if(scanIndex == selectedOption)
 			{
-				string selectedLeft = "	", selectedRight = "	";
-				if (selectedOption == i + 1)
-				{
-					selectedLeft = "<--	";
-					selectedRight = "	-->";
-				}
-				if (choiceList[i]->getVisible())
-					cout << selectedLeft << choiceList[i]->getOptionName() << selectedRight << endl;
+				caughtIndex = scanIndex;
+				selectedLeft = "<--	";
+				selectedRight = "	-->";
 			}
+			if (choice.getVisible())
+					cout << selectedLeft << choice.getOptionName() << selectedRight << endl;
+			scanIndex++;
 		}
 
 
 		key = _getch();
 		switch (key)
 		{
+		case 'w':
+		case 'z':
+		case 'u':
 		case '+':
-			selectIncr();
+			selectDecr();
 			break;
 
+		case 's':
+		case 'd':
 		case '-':
-			selectDecr();
+			selectIncr();
 			break;
 		default:
 			cout << "Unbinded key pressed." << endl;
@@ -58,26 +54,23 @@ unsigned int menu::display()
 		}
 		system("cls");
 	}while(key != 13);
-	return selectedOption;
+
+	return caughtIndex;
 }
 
 void menu::selectIncr()
 {
-	if(selectedOption < getLastOption()) selectedOption++;
+	if(selectedOption < choiceList.size() - 1) selectedOption++;
 }
 
 void menu::selectDecr()
 {
-	if(selectedOption > 1) selectedOption--;
+	if(selectedOption > 0) selectedOption--;
 }
 
 void menu::addChoice(string name)
 {
-	unsigned int lastChoice = getLastOption();
-	if (lastChoice < optionsPerMenu)
-	{
-		choiceList[lastChoice] = new menuChoice(lastChoice, name);
-	}
+	choiceList.push_front(menuChoice(choiceList.size(), name));
 }
 
 void menu::hideChoice(menuChoice* menuChoiceIn)
@@ -90,11 +83,14 @@ void menu::showChoice(menuChoice* menuChoiceIn)
 	menuChoiceIn -> setVisible(1);
 }
 
-void menu::deleteChoice(unsigned int labelIn)
+bool menu::deleteChoice(unsigned int labelIn)
 {
-	choiceList[labelIn] -> ~menuChoice();
-	for(int i = labelIn + 1; i < optionsPerMenu; i++)
-	{
-		choiceList[i] -> setLabel(choiceList[i] -> getLabel() - 1);
-	}
+	typename list<menuChoice>::iterator it = choiceList.begin();
+	while (it != choiceList.end())
+		if (it++->getLabel() == labelIn)
+		{
+			choiceList.erase(it);
+			return true;
+		}
+	return false;
 }

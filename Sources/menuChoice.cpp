@@ -1,13 +1,15 @@
-#include "menuChoice.h"
+#include "../Headers/menuChoice.h"
 
-menuChoice::menuChoice(unsigned int Label_, std::string optionName_, bool Visible_) : Label(Label_), optionName(optionName_), Visible(Visible_)
+using namespace std;
+
+menuChoice::menuChoice(unsigned int Label_, string optionName_, bool Visible_) : Label(Label_), optionName(optionName_), Visible(Visible_)
 {
 
 }
 
 menuChoice::~menuChoice()
 {
-	//delete this;
+
 }
 
 unsigned int menuChoice::getLabel() const

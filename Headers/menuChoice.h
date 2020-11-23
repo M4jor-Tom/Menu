@@ -1,8 +1,11 @@
 #pragma once
 
+#include <cstdlib>
 #include <string>
 #include <iostream>
 #include <conio.h>
+
+using namespace std;
 
 class menuChoice
 {
@@ -12,7 +15,7 @@ private:
 	bool Visible;
 
 public:
-	menuChoice(unsigned int Label_ = 1, std::string optionName_ = "", bool Visible_ = 1);
+	menuChoice(unsigned int Label_ = 1, string optionName_ = "", bool Visible_ = 1);
 	~menuChoice();
 
 	unsigned int getLabel() const;
