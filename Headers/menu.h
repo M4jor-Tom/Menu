@@ -1,9 +1,7 @@
 #pragma once
 #include <list>
 #include "menuChoice.h"
-#ifndef optionsPerMenu
-#define optionsPerMenu 10
-#endif
+
 class menu
 {
 private:
