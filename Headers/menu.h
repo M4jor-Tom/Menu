@@ -13,10 +13,10 @@ public:
 	~menu();
 
 	unsigned int display();
+	bool leaving() const;
 	void selectIncr();
 	void selectDecr();
 	void addChoice(string name);
-	void hideChoice(menuChoice* menuChoiceIn);
-	void showChoice(menuChoice* menuChoiceIn);
+	void addExit(string name = "Exit");
 	bool deleteChoice(unsigned int labelIn);
 };

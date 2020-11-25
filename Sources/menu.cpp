@@ -14,7 +14,6 @@ menu::~menu()
 unsigned int menu::display()
 {
 	char key = 0;
-	unsigned short int caughtIndex = 0;
 	do
 	{
 		unsigned short int scanIndex = 0;
@@ -23,12 +22,10 @@ unsigned int menu::display()
 			string selectedLeft = "	", selectedRight = "	";
 			if(scanIndex == selectedOption)
 			{
-				caughtIndex = scanIndex;
 				selectedLeft = "<--	";
 				selectedRight = "	-->";
 			}
-			if (choice.getVisible())
-					cout << selectedLeft << choice.getOptionName() << selectedRight << endl;
+			cout << selectedLeft << choice.getOptionName() << selectedRight << endl;
 			scanIndex++;
 		}
 
@@ -36,6 +33,9 @@ unsigned int menu::display()
 		key = _getch();
 		switch (key)
 		{
+		case 13:
+			break;
+
 		case 'w':
 		case 'z':
 		case 'u':
@@ -55,7 +55,15 @@ unsigned int menu::display()
 		system("cls");
 	}while(key != 13);
 
-	return caughtIndex;
+	return selectedOption;
+}
+
+bool menu::leaving() const
+{
+	for (menuChoice choice : choiceList)
+		if(choice.leaves() && choice.getLabel() == selectedOption)
+			return true;
+	return false;
 }
 
 void menu::selectIncr()
@@ -70,17 +78,12 @@ void menu::selectDecr()
 
 void menu::addChoice(string name)
 {
-	choiceList.push_back(menuChoice(choiceList.size(), name));
+	choiceList.push_back(menuChoice(choiceList.size(), name, false));
 }
 
-void menu::hideChoice(menuChoice* menuChoiceIn)
+void menu::addExit(string name)
 {
-	menuChoiceIn -> setVisible(0);
-}
-
-void menu::showChoice(menuChoice* menuChoiceIn)
-{
-	menuChoiceIn -> setVisible(1);
+	choiceList.push_back(menuChoice(choiceList.size(), name, true));
 }
 
 bool menu::deleteChoice(unsigned int labelIn)

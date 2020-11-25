@@ -2,7 +2,7 @@
 
 using namespace std;
 
-menuChoice::menuChoice(unsigned int Label_, string optionName_, bool Visible_) : Label(Label_), optionName(optionName_), Visible(Visible_)
+menuChoice::menuChoice(unsigned int Label_, string optionName_, bool leaver_) : Label(Label_), optionName(optionName_), leaver(leaver_)
 {
 
 }
@@ -14,42 +14,24 @@ menuChoice::~menuChoice()
 
 unsigned int menuChoice::getLabel() const
 {
-	if(this != nullptr)
-		return Label;
-	else
-		return NULL;
-}
-
-bool menuChoice::getVisible() const
-{
-	if (this != nullptr)
-		return Visible;
-	else
-		return NULL;
+	return Label;
 }
 
 string menuChoice::getOptionName() const
 {
-	if (this != nullptr)
-		return optionName;
-	else
-		return NULL;
+	return optionName;
+}
+
+bool menuChoice::leaves() const
+{
+	return leaver;
 }
 
 void menuChoice::setLabel(int labelIn)
 {
-	if(this != nullptr)
-		Label = labelIn;
+	Label = labelIn;
 }
-
-void menuChoice::setVisible(bool visibleIn)
-{
-	if (this != nullptr)
-		Visible = visibleIn;
-}
-
 void menuChoice::setOptionName(string nameIn)
 {
-	if (this != nullptr)
-		optionName = nameIn;
+	optionName = nameIn;
 }

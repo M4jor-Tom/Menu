@@ -11,18 +11,17 @@ class menuChoice
 {
 private:
 	unsigned int Label;
-	std::string optionName;
-	bool Visible;
+	string optionName;
+	bool leaver;
 
 public:
-	menuChoice(unsigned int Label_ = 1, string optionName_ = "", bool Visible_ = 1);
+	menuChoice(unsigned int Label_, string optionName_, bool leaver_);
 	~menuChoice();
 
 	unsigned int getLabel() const;
-	bool getVisible() const;
-	std::string getOptionName() const;
+	string getOptionName() const;
+	bool leaves() const;
 
 	void setLabel(int labelIn);
-	void setVisible(bool visibleIn);
-	void setOptionName(std::string nameIn);
+	void setOptionName(string nameIn);
 };
