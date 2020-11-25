@@ -70,7 +70,7 @@ void menu::selectDecr()
 
 void menu::addChoice(string name)
 {
-	choiceList.push_front(menuChoice(choiceList.size(), name));
+	choiceList.push_back(menuChoice(choiceList.size(), name));
 }
 
 void menu::hideChoice(menuChoice* menuChoiceIn)
