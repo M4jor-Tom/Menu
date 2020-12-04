@@ -2,3 +2,9 @@
 Menu/
 
 config/
+
+eclipseFiles/
+
+Makefile
+
+test.cpp
