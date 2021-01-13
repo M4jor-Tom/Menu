@@ -1,23 +1,23 @@
-#include "../Headers/menu.h"
+#include "../Headers/Menu.h"
 using namespace std;
 
-menu::menu(): selectedOption(0)
+Menu::Menu(): selectedOption(0)
 {
 	
 }
 
-menu::~menu()
+Menu::~Menu()
 {
 
 }
 
-unsigned int menu::display()
+unsigned int Menu::display()
 {
 	char key = 0;
 	do
 	{
 		unsigned short int scanIndex = 0;
-		for(menuChoice choice: choiceList)
+		for(MenuChoice choice: choiceList)
 		{
 			string selectedLeft = "	", selectedRight = "	";
 			if(scanIndex == selectedOption)
@@ -58,37 +58,37 @@ unsigned int menu::display()
 	return selectedOption;
 }
 
-bool menu::leaving() const
+bool Menu::leaving() const
 {
-	for (menuChoice choice : choiceList)
+	for (MenuChoice choice : choiceList)
 		if(choice.leaves() && choice.getLabel() == selectedOption)
 			return true;
 	return false;
 }
 
-void menu::selectIncr()
+void Menu::selectIncr()
 {
 	if(selectedOption < choiceList.size() - 1) selectedOption++;
 }
 
-void menu::selectDecr()
+void Menu::selectDecr()
 {
 	if(selectedOption > 0) selectedOption--;
 }
 
-void menu::addChoice(string name)
+void Menu::addChoice(string name)
 {
-	choiceList.push_back(menuChoice(choiceList.size(), name, false));
+	choiceList.push_back(MenuChoice(choiceList.size(), name, false));
 }
 
-void menu::addExit(string name)
+void Menu::addExit(string name)
 {
-	choiceList.push_back(menuChoice(choiceList.size(), name, true));
+	choiceList.push_back(MenuChoice(choiceList.size(), name, true));
 }
 
-bool menu::deleteChoice(unsigned int labelIn)
+bool Menu::deleteChoice(unsigned int labelIn)
 {
-	typename list<menuChoice>::iterator it = choiceList.begin();
+	typename list<MenuChoice>::iterator it = choiceList.begin();
 	while (it != choiceList.end())
 		if (it++->getLabel() == labelIn)
 		{

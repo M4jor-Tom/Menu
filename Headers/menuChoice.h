@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class menuChoice
+class MenuChoice
 {
 private:
 	unsigned int Label;
@@ -15,8 +15,8 @@ private:
 	bool leaver;
 
 public:
-	menuChoice(unsigned int Label_, string optionName_, bool leaver_);
-	~menuChoice();
+	MenuChoice(unsigned int Label_, string optionName_, bool leaver_);
+	~MenuChoice();
 
 	unsigned int getLabel() const;
 	string getOptionName() const;

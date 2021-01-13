@@ -1,16 +1,16 @@
 #pragma once
 #include <list>
-#include "menuChoice.h"
+#include "MenuChoice.h"
 
-class menu
+class Menu
 {
 private:
-	list<menuChoice> choiceList;
+	list<MenuChoice> choiceList;
 	unsigned int selectedOption;
 
 public:
-	menu();
-	~menu();
+	Menu();
+	~Menu();
 
 	unsigned int display();
 	bool leaving() const;

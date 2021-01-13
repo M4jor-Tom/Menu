@@ -1,37 +1,37 @@
-#include "../Headers/menuChoice.h"
+#include "../Headers/MenuChoice.h"
 
 using namespace std;
 
-menuChoice::menuChoice(unsigned int Label_, string optionName_, bool leaver_) : Label(Label_), optionName(optionName_), leaver(leaver_)
+MenuChoice::MenuChoice(unsigned int Label_, string optionName_, bool leaver_) : Label(Label_), optionName(optionName_), leaver(leaver_)
 {
 
 }
 
-menuChoice::~menuChoice()
+MenuChoice::~MenuChoice()
 {
 
 }
 
-unsigned int menuChoice::getLabel() const
+unsigned int MenuChoice::getLabel() const
 {
 	return Label;
 }
 
-string menuChoice::getOptionName() const
+string MenuChoice::getOptionName() const
 {
 	return optionName;
 }
 
-bool menuChoice::leaves() const
+bool MenuChoice::leaves() const
 {
 	return leaver;
 }
 
-void menuChoice::setLabel(int labelIn)
+void MenuChoice::setLabel(int labelIn)
 {
 	Label = labelIn;
 }
-void menuChoice::setOptionName(string nameIn)
+void MenuChoice::setOptionName(string nameIn)
 {
 	optionName = nameIn;
 }
