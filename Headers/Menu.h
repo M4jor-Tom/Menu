@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <sstream>
 #include "MenuChoice.h"
 
 class Menu
@@ -9,14 +10,23 @@ private:
 	unsigned int selectedOption;
 
 public:
+	//Constructors
 	Menu();
+
+	//Destructors
 	~Menu();
 
-	unsigned int display();
+	//Displayers
+	unsigned int display(const stringstream &summary);
+	unsigned int display(const string &summary = "");
+
+	//Getters
 	bool leaving() const;
+
+	//Setters / Editers
 	void selectIncr();
 	void selectDecr();
-	void addChoice(string name);
-	void addExit(string name = "Exit");
-	bool deleteChoice(unsigned int labelIn);
+	void addChoice(const string &name);
+	void addExit(const string &name = "Exit");
+	bool deleteChoice(const unsigned int &labelIn);
 };

@@ -11,11 +11,20 @@ Menu::~Menu()
 
 }
 
-unsigned int Menu::display()
+unsigned int Menu::display(const stringstream &summary)
+{
+	return display(summary.str());
+}
+
+unsigned int Menu::display(const string &summary)
 {
 	char key = 0;
 	do
 	{
+		//Summary display
+		cout << summary << endl << endl;
+
+		//Cursor display
 		unsigned short int scanIndex = 0;
 		for(MenuChoice choice: choiceList)
 		{
@@ -29,7 +38,7 @@ unsigned int Menu::display()
 			scanIndex++;
 		}
 
-
+		//User selection
 		key = _getch();
 		switch (key)
 		{
@@ -39,18 +48,18 @@ unsigned int Menu::display()
 		case 'w':
 		case 'z':
 		case 'u':
-		case '+':
+		case '-':
 			selectDecr();
 			break;
 
 		case 's':
 		case 'd':
-		case '-':
+		case '+':
 			selectIncr();
 			break;
 		default:
-			cout << "Unbinded key pressed." << endl;
-			break;
+			cout << "Unbinded key pressed." << endl << "Press any key to retry." << endl;
+			_getch();
 		}
 		system("cls");
 	}while(key != 13);
@@ -76,17 +85,17 @@ void Menu::selectDecr()
 	if(selectedOption > 0) selectedOption--;
 }
 
-void Menu::addChoice(string name)
+void Menu::addChoice(const string &name)
 {
 	choiceList.push_back(MenuChoice(choiceList.size(), name, false));
 }
 
-void Menu::addExit(string name)
+void Menu::addExit(const string &name)
 {
 	choiceList.push_back(MenuChoice(choiceList.size(), name, true));
 }
 
-bool Menu::deleteChoice(unsigned int labelIn)
+bool Menu::deleteChoice(const unsigned int &labelIn)
 {
 	typename list<MenuChoice>::iterator it = choiceList.begin();
 	while (it != choiceList.end())

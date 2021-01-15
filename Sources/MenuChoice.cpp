@@ -2,7 +2,8 @@
 
 using namespace std;
 
-MenuChoice::MenuChoice(unsigned int Label_, string optionName_, bool leaver_) : Label(Label_), optionName(optionName_), leaver(leaver_)
+MenuChoice::MenuChoice(const unsigned int &Label_, const string &optionName_, const bool &leaver_):
+	Label(Label_), optionName(optionName_), leaver(leaver_)
 {
 
 }
@@ -27,11 +28,11 @@ bool MenuChoice::leaves() const
 	return leaver;
 }
 
-void MenuChoice::setLabel(int labelIn)
+void MenuChoice::setLabel(const int &labelIn)
 {
 	Label = labelIn;
 }
-void MenuChoice::setOptionName(string nameIn)
+void MenuChoice::setOptionName(const string &nameIn)
 {
 	optionName = nameIn;
 }

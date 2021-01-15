@@ -15,13 +15,13 @@ private:
 	bool leaver;
 
 public:
-	MenuChoice(unsigned int Label_, string optionName_, bool leaver_);
+	MenuChoice(const unsigned int &Label_, const string &optionName_, const bool &leaver_);
 	~MenuChoice();
 
 	unsigned int getLabel() const;
 	string getOptionName() const;
 	bool leaves() const;
 
-	void setLabel(int labelIn);
-	void setOptionName(string nameIn);
+	void setLabel(const int &labelIn);
+	void setOptionName(const string &nameIn);
 };
