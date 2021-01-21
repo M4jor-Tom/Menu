@@ -1,14 +1,26 @@
-menuTest: test.o
-	g++ test.o menu.o -o $@
+OBJS	= test.o Menu.o MenuChoice.o conio.o
+SOURCE	= test.cpp Sources/Menu.cpp Sources/MenuChoice.cpp conio/Sources/conio.cpp
+HEADER	= Headers/Menu.h Headers/MenuChoice.h conio/Headers/conio.h
+OUT	= MenuTest
+CC	 = g++
+FLAGS	 = -g -c -Wall
+LFLAGS	 = 
+
+all: $(OBJS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
 test.o: test.cpp
-	g++ -c test.cpp -o $@
-	
-menu.o: Sources/menu.cpp Headers/menuChoice.h
-	g++ -c Sources/menu.cpp -o $@
-	
-menuChoice.o: Sources/menuChoice.cpp
-	g++ -c Sources/menuChoice.cpp -o menuChoice.o
+	$(CC) $(FLAGS) test.cpp 
+
+Menu.o: Sources/Menu.cpp
+	$(CC) $(FLAGS) Sources/Menu.cpp 
+
+MenuChoice.o: Sources/MenuChoice.cpp
+	$(CC) $(FLAGS) Sources/MenuChoice.cpp 
 
 conio.o: conio/Sources/conio.cpp
-	g++ -c conio/Sources/conio.cpp -o conio.o
+	$(CC) $(FLAGS) conio/Sources/conio.cpp 
+
+
+clean:
+	rm -f $(OBJS) $(OUT)

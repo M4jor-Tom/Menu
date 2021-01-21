@@ -1,4 +1,11 @@
 #include "../Headers/Menu.h"
+
+#if __has_include(<unistd.h>)
+const char clearCommand[] = "clear";
+#else
+const char clearCommand[] = "cls";
+#endif
+
 using namespace std;
 
 Menu::Menu(): selectedOption(0)
@@ -42,6 +49,7 @@ unsigned int Menu::display(const string &summary)
 		key = _getch();
 		switch (key)
 		{
+		case '\n':
 		case 13:
 			break;
 
@@ -58,11 +66,11 @@ unsigned int Menu::display(const string &summary)
 			selectIncr();
 			break;
 		default:
-			cout << "Unbinded key pressed." << endl << "Press any key to retry." << endl;
+			cout << "Unbinded key pressed"/* << " (" << key << ")"*/ << "." << endl << "Press any key to retry." << endl;
 			_getch();
 		}
-		system("cls");
-	}while(key != 13);
+		system(clearCommand);
+	}while(key != 13 && key != '\n');
 
 	return selectedOption;
 }

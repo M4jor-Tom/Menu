@@ -10,3 +10,5 @@ Makefile
 test.cpp
 
 *.o
+
+MenuTest

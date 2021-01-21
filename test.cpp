@@ -1,8 +1,8 @@
-#include "Headers/menu.h"
+#include "Headers/Menu.h"
 
 int main()
 {
-	menu m;
+	Menu m;
 	m.addChoice("test");
 	m.addExit();
 	while(!m.leaving())
