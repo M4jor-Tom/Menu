@@ -1,6 +1,6 @@
 OBJS	= test.o Menu.o MenuChoice.o conio.o
 SOURCE	= test.cpp Sources/Menu.cpp Sources/MenuChoice.cpp conio/Sources/conio.cpp
-HEADER	= Headers/Menu.h Headers/MenuChoice.h conio/Headers/conio.h
+HEADER	= Headers/Menu.h Headers/MenuChoice.h conio/Headers/conio.h unicommand/Headers/unicommand.h
 OUT	= MenuTest
 CC	 = g++
 FLAGS	 = -g -c -Wall
