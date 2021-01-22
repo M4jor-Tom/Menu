@@ -1,3 +1,6 @@
 [submodule "conio"]
 	path = conio
 	url = https://github.com/M4jor-Tom/conio
+[submodule "unicommand"]
+	path = unicommand
+	url = https://github.com/M4jor-Tom/unicommand

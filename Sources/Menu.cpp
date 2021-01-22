@@ -1,10 +1,5 @@
 #include "../Headers/Menu.h"
-
-#if __has_include(<unistd.h>)
-const char clearCommand[] = "clear";
-#else
-const char clearCommand[] = "cls";
-#endif
+#include "../unicommand/Headers/unicommand.h"
 
 using namespace std;
 
@@ -69,7 +64,7 @@ unsigned int Menu::display(const string &summary)
 			cout << "Unbinded key pressed"/* << " (" << key << ")"*/ << "." << endl << "Press any key to retry." << endl;
 			_getch();
 		}
-		system(clearCommand);
+		system(clearCommand.c_str());
 	}while(key != 13 && key != '\n');
 
 	return selectedOption;
