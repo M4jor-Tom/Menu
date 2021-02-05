@@ -3,7 +3,9 @@
 int main()
 {
 	Menu m;
-	m.addChoice("test");
+	m.addChoice("bold");
+	m.addChoice("blink", Text::BLINK);
+	m.addChoice("blue", Text::FG_BLUE);
 	m.addExit();
 	while(!m.leaving())
 		m.display();

@@ -34,7 +34,7 @@ unsigned int Menu::display(const string &summary)
 			string selectedLeft = Text::clearMods(), selectedRight = Text::clearMods();
 			if(scanIndex == _selectedOption)
 			{
-				selectedLeft = Text::setMod(Text::BOLD);//"<--	";
+				selectedLeft = Text::setMod(choice.getHighlight());//"<--	";
 				//selectedRight = Text::clearMod(Text::BOLD);//"	-->";
 			}
 			cout << selectedLeft << choice.getOptionName() << selectedRight << endl;
@@ -89,6 +89,12 @@ void Menu::selectIncr()
 void Menu::selectDecr()
 {
 	if(_selectedOption > 0) _selectedOption--;
+}
+
+
+void Menu::addChoice(const string &name, Text::Code highlight)
+{
+	_choiceList.push_back(MenuChoice(_choiceList.size(), name, false, highlight));
 }
 
 void Menu::addChoice(const string &name)
