@@ -48,6 +48,7 @@ unsigned int Menu::display(const string &summary)
 		case 13:
 			break;
 
+		case 65:
 		case 'w':
 		case 'z':
 		case 'u':
@@ -55,6 +56,7 @@ unsigned int Menu::display(const string &summary)
 			selectDecr();
 			break;
 
+		case 66:
 		case 's':
 		case 'd':
 		case '+':
