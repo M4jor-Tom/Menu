@@ -136,3 +136,8 @@ bool Menu::deleteChoice(const unsigned int &labelIn)
 		}
 	return false;
 }
+
+void Menu::clear()
+{
+    _choiceList.clear();
+}

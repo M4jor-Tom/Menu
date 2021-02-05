@@ -31,4 +31,5 @@ public:
 	void addLocked(const string &name);
 	void addExit(const string &name = "Exit", Text::Code highlight = Text::BOLD);
 	bool deleteChoice(const unsigned int &labelIn);
+	void clear();
 };
