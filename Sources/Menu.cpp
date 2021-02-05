@@ -1,5 +1,6 @@
 #include "../Headers/Menu.h"
 #include "../unicommand/Headers/unicommand.h"
+#include "../TextModyst/Headers/Modyst.h"
 
 using namespace std;
 
@@ -30,11 +31,11 @@ unsigned int Menu::display(const string &summary)
 		unsigned short int scanIndex = 0;
 		for(MenuChoice choice: choiceList)
 		{
-			string selectedLeft = "	", selectedRight = "	";
+			string selectedLeft = Text::clearMods(), selectedRight = Text::clearMods();
 			if(scanIndex == selectedOption)
 			{
-				selectedLeft = "<--	";
-				selectedRight = "	-->";
+				selectedLeft = Text::setMod(Text::BOLD);//"<--	";
+				//selectedRight = Text::clearMod(Text::BOLD);//"	-->";
 			}
 			cout << selectedLeft << choice.getOptionName() << selectedRight << endl;
 			scanIndex++;
