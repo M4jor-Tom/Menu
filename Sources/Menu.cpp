@@ -76,7 +76,7 @@ unsigned int Menu::display(const string &summary)
 bool Menu::leaving() const
 {
 	for (MenuChoice choice : _choiceList)
-		if(choice.leaves() && choice.getLabel() == _selectedOption)
+		if(choice.leaves() && choice.getLabel() == _selectedOption && !choice.isLocked())
 			return true;
 	return false;
 }
@@ -100,6 +100,24 @@ void Menu::addChoice(const string &name, Text::Code highlight)
 void Menu::addChoice(const string &name)
 {
 	_choiceList.push_back(MenuChoice(_choiceList.size(), name, false));
+}
+
+void Menu::addLocked(const string &name)
+{
+	_choiceList.push_back(
+		MenuChoice(
+			_choiceList.size(),
+			Text::textEffect(
+				Text::DIM,
+				Text::textEffect(
+					Text::SLASH,
+					name
+				)
+			),
+			false,
+			true
+		)
+	);
 }
 
 void Menu::addExit(const string &name, Text::Code highlight)

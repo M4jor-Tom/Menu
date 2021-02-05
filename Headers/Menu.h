@@ -28,6 +28,7 @@ public:
 	void selectDecr();
 	void addChoice(const string &name, Text::Code highlight);
 	void addChoice(const string &name);
+	void addLocked(const string &name);
 	void addExit(const string &name = "Exit", Text::Code highlight = Text::BOLD);
 	bool deleteChoice(const unsigned int &labelIn);
 };
