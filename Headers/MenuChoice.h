@@ -10,12 +10,12 @@ using namespace std;
 class MenuChoice
 {
 private:
-	unsigned int Label;
-	string optionName;
-	bool leaver;
+	unsigned int _label;
+	string _optionName;
+	bool _leaver;
 
 public:
-	MenuChoice(const unsigned int &Label_, const string &optionName_, const bool &leaver_);
+	MenuChoice(const unsigned int &label, const string &optionName, const bool &leaver);
 	~MenuChoice();
 
 	unsigned int getLabel() const;

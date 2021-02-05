@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Menu::Menu(): selectedOption(0)
+Menu::Menu(): _selectedOption(0)
 {
 	
 }
@@ -29,10 +29,10 @@ unsigned int Menu::display(const string &summary)
 
 		//Cursor display
 		unsigned short int scanIndex = 0;
-		for(MenuChoice choice: choiceList)
+		for(MenuChoice choice: _choiceList)
 		{
 			string selectedLeft = Text::clearMods(), selectedRight = Text::clearMods();
-			if(scanIndex == selectedOption)
+			if(scanIndex == _selectedOption)
 			{
 				selectedLeft = Text::setMod(Text::BOLD);//"<--	";
 				//selectedRight = Text::clearMod(Text::BOLD);//"	-->";
@@ -70,44 +70,44 @@ unsigned int Menu::display(const string &summary)
 		system(clearCommand.c_str());
 	}while(key != 13 && key != '\n');
 
-	return selectedOption;
+	return _selectedOption;
 }
 
 bool Menu::leaving() const
 {
-	for (MenuChoice choice : choiceList)
-		if(choice.leaves() && choice.getLabel() == selectedOption)
+	for (MenuChoice choice : _choiceList)
+		if(choice.leaves() && choice.getLabel() == _selectedOption)
 			return true;
 	return false;
 }
 
 void Menu::selectIncr()
 {
-	if(selectedOption < choiceList.size() - 1) selectedOption++;
+	if(_selectedOption < _choiceList.size() - 1) _selectedOption++;
 }
 
 void Menu::selectDecr()
 {
-	if(selectedOption > 0) selectedOption--;
+	if(_selectedOption > 0) _selectedOption--;
 }
 
 void Menu::addChoice(const string &name)
 {
-	choiceList.push_back(MenuChoice(choiceList.size(), name, false));
+	_choiceList.push_back(MenuChoice(_choiceList.size(), name, false));
 }
 
-void Menu::addExit(const string &name)
+void Menu::addExit(const string &name, Text::Code highlight)
 {
-	choiceList.push_back(MenuChoice(choiceList.size(), name, true));
+	_choiceList.push_back(MenuChoice(_choiceList.size(), name, true, highlight));
 }
 
 bool Menu::deleteChoice(const unsigned int &labelIn)
 {
-	typename list<MenuChoice>::iterator it = choiceList.begin();
-	while (it != choiceList.end())
+	typename list<MenuChoice>::iterator it = _choiceList.begin();
+	while (it != _choiceList.end())
 		if (it++->getLabel() == labelIn)
 		{
-			choiceList.erase(it);
+			_choiceList.erase(it);
 			return true;
 		}
 	return false;

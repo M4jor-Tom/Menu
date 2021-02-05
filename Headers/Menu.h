@@ -6,8 +6,8 @@
 class Menu
 {
 private:
-	list<MenuChoice> choiceList;
-	unsigned int selectedOption;
+	list<MenuChoice> _choiceList;
+	unsigned int _selectedOption;
 
 public:
 	//Constructors
