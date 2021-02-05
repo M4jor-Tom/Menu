@@ -4,3 +4,6 @@
 [submodule "unicommand"]
 	path = unicommand
 	url = https://github.com/M4jor-Tom/unicommand
+[submodule "TextModyst"]
+	path = TextModyst
+	url = https://github.com/M4jor-Tom/TextModyst
