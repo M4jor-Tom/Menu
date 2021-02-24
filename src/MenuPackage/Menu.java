@@ -99,6 +99,11 @@ public class Menu
 			)
 		);
 	}
+
+	public void addExit()
+	{
+		_choiceList.add(new MenuChoice(_choiceList.size(), "Exit", true));
+	}
 	
 	public void addExit(String name)
 	{
