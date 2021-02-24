@@ -15,6 +15,11 @@ public class Menu
 		_scanner = new Scanner(System.in);
 		_selectedOption = 0;
 	}
+
+	public int display()
+	{
+		return display("");
+	}
 	
 	public int display(String summary)
 	{
