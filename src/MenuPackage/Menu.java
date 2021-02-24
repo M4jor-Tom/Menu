@@ -1,15 +1,19 @@
 package MenuPackage;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Menu
 {
 	private ArrayList<MenuChoice> _choiceList;
 	private int _selectedOption;
+	private Scanner _scanner;
 	
 	public Menu()
 	{
-		 _selectedOption = 0;
+		_choiceList = new ArrayList<>();
+		_scanner = new Scanner(System.in);
+		_selectedOption = 0;
 	}
 	
 	public int display(String summary)
@@ -35,9 +39,11 @@ public class Menu
 			}
 
 			//User selection
-			//key = _getch();[GETCH]
+			key = _scanner.next().charAt(0);//_getch();[GETCH]
 			switch (key)
 			{
+			case ' ':
+			case 'e':
 			case '\n':
 			case 13:
 				break;
@@ -58,10 +64,10 @@ public class Menu
 				break;
 			default:
 				System.out.println("Unbinded key pressed"/* + " (" << key << ")"*/ + ".\nPress any key to retry.");
-				//_getch();[GETCH]
+				_scanner.next().charAt(0);//_getch();[GETCH]
 			}
-			system(clearCommand.c_str());
-		}while(key != 13 && key != '\n');
+			clearScreen();//system(clearCommand.c_str());[CLS]
+		}while(key != 13 && key != '\n' && key != 'e' && key != ' ');
 
 		return _selectedOption;
 	}
@@ -126,4 +132,10 @@ public class Menu
 	{
 	    _choiceList.clear();
 	}
+	
+	public static void clearScreen()
+	{
+		for(int i = 0; i < 100; i++)
+			System.out.println();
+	}  
 }
