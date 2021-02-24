@@ -1,14 +1,16 @@
-#include "Headers/Menu.h"
 
-int main()
+
+public class MainClass
 {
-	Menu m;
-	m.addChoice("bold");
-	m.addChoice("blink", Text::BLINK);
-	m.addLocked("locked");
-	m.addChoice("blue", Text::FG_BLUE);
-	m.addExit();
-	while(!m.leaving())
-		m.display();
-	return 0;
+	public static void main(String[] args)
+	{
+		Menu m = new Menu;
+		m.addChoice("This");
+		m.addChoice("is");
+		m.addLocked("a (locked)");
+		m.addChoice("test");
+		m.addExit();
+		while(!m.leaving())
+			m.display();
+	}	
 }
