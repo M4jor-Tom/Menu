@@ -52,7 +52,7 @@ bool MenuChoice::leaves() const
 
 void MenuChoice::setLabel(const int &labelIn)
 {
-	_leaver = labelIn;
+	_label = labelIn;
 }
 void MenuChoice::setOptionName(const string &nameIn)
 {
